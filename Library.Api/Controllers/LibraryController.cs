@@ -18,14 +18,14 @@ namespace LibraryApi.Controllers
 
         public async Task<IActionResult> Add(BookDto book)
         {
-            var response = await _requestClient.GetResponse<Accepted>(new
+            await _requestClient.GetResponse<Accepted>(new
             {
                 book.Title,
                 book.Author,
                 book.Content
             });
 
-            return Ok(response.Message);
+            return Ok();
         }
     }
 }
