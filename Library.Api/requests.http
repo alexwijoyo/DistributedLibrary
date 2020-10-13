@@ -1,0 +1,10 @@
+POST http://localhost:46833/api/library
+Content-Type: application/json
+
+{
+  "Title": "Anna Karenina",
+  "Author": "Leo Tolstoy",
+  "Content": "Happy families are all alike; every unhappy family is unhappy in its own way."
+}
+
+###

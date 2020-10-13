@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>dotnet-LibraryWorker-D271784E-7D6C-4B2F-A451-A9317526ACA6</UserSecretsId>
+    <RootNamespace>LibraryWorker</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit.AspNetCore" Version="7.0.4" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.0.4" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Library.Contracts\Library.Contracts.csproj" />
+  </ItemGroup>
+</Project>

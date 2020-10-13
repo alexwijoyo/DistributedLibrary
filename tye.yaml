@@ -1,0 +1,19 @@
+name: service-kinds
+services:
+  - name: rabbitmq
+    image: rabbitmq:3-management
+    bindings:
+      - name: rabbit
+        port: 5672
+        protocol: rabbitmq
+      - name: management
+        port: 15672
+
+  - name: worker
+    project: Library.Worker/Library.Worker.csproj
+    replicas: 2
+
+  - name: api
+    project: Library.Api/Library.Api.csproj
+    bindings:
+      - port: 5000
