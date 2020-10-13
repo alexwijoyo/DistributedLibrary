@@ -16,6 +16,7 @@ namespace LibraryApi.Controllers
             _requestClient = requestClient;
         }
 
+        [HttpPost]
         public async Task<IActionResult> Add(BookDto book)
         {
             await _requestClient.GetResponse<Accepted>(new
