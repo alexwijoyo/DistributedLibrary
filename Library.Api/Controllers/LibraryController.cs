@@ -17,7 +17,7 @@ namespace LibraryApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(BookDto book)
+        public async Task<IActionResult> Borrow(BookDto book)
         {
             await _requestClient.GetResponse<Accepted>(new
             {
