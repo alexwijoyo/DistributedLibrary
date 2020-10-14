@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +19,7 @@ namespace LibraryWorker
                     services.AddSingleton<LibraryService>();
                     services.AddMassTransit(x =>
                     {
+                        x.SetKebabCaseEndpointNameFormatter();
                         x.AddConsumers(Assembly.GetAssembly(typeof(Program)));
                         x.UsingRabbitMq((context, cfg) =>
                         {

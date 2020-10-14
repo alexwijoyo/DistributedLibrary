@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using LibraryContracts;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
@@ -9,24 +10,24 @@ namespace LibraryApi.Controllers
     [Route("api/[controller]")]
     public class LibraryController : ControllerBase
     {
-        private readonly IRequestClient<BorrowBook> _requestClient;
-
-        public LibraryController(IRequestClient<BorrowBook> requestClient)
+        private readonly ISendEndpointProvider _sendEndpointProvider;
+        public LibraryController(ISendEndpointProvider sendEndpointProvider)
         {
-            _requestClient = requestClient;
+            _sendEndpointProvider = sendEndpointProvider;
         }
 
         [HttpPost]
         public async Task<IActionResult> Borrow(BookDto book)
         {
-            await _requestClient.GetResponse<Accepted>(new
+            var endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("exchange:borrow-book"));
+            await endpoint.Send<BorrowBook>(new
             {
                 book.Title,
                 book.Author,
                 book.Content
             });
 
-            return Ok();
+            return Accepted();
         }
     }
 }

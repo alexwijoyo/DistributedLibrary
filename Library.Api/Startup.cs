@@ -1,4 +1,3 @@
-using LibraryContracts;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,8 +12,8 @@ namespace LibraryApi
             services.AddControllers();
             services.AddMassTransit(x =>
             {
+                x.SetKebabCaseEndpointNameFormatter();
                 x.UsingRabbitMq();
-                x.AddRequestClient<BorrowBook>();
             });
             services.AddMassTransitHostedService();
         }

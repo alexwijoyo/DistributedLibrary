@@ -13,12 +13,12 @@ namespace LibraryWorker
             _libraryService = libraryService;
         }
 
-        public async Task Consume(ConsumeContext<BorrowBook> context)
+        public Task Consume(ConsumeContext<BorrowBook> context)
         {
             var msg = context.Message;
             var book = new Book(msg.Title, msg.Author, msg.Content);
             _libraryService.Borrow(book);
-            await context.RespondAsync<Accepted>(new { TimeStamp = InVar.Timestamp });
+            return Task.CompletedTask;
         }
     }
 }
