@@ -11,7 +11,7 @@ services:
 
   - name: worker
     project: Library.Worker/Library.Worker.csproj
-    replicas: 2
+    replicas: 3
 
   - name: api
     project: Library.Api/Library.Api.csproj
