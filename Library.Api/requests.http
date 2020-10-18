@@ -8,3 +8,25 @@ Content-Type: application/json
 }
 
 ###
+
+POST http://localhost:5000/api/library
+Content-Type: application/json
+
+{
+  "Title": "The Bronze Horseman",
+  "Author": "Alexander Pushkin",
+  "Content": "A wave-swept shore, remote, forlorn: Here stood he, rapt in thought and drawn..."
+}
+
+###
+
+POST http://localhost:5000/api/library
+Content-Type: application/json
+
+{
+  "Title": "A Hero of Our Time",
+  "Author": "Mikhail Lermontov",
+  "Content": "My whole life has been merely a succession of miserable and unsuccessful denials of feelings or reason."
+}
+
+###
