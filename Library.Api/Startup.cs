@@ -13,7 +13,7 @@ namespace LibraryApi
             services.AddMassTransit(x =>
             {
                 x.SetKebabCaseEndpointNameFormatter();
-                x.UsingRabbitMq();
+                x.UsingRabbitMq((context, cfg) => cfg.Host("rabbitmq"));
             });
             services.AddMassTransitHostedService();
         }

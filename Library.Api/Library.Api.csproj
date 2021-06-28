@@ -17,6 +17,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Library.Contracts\Library.Contracts.csproj" />
   </ItemGroup>
+  <ItemGroup>
+      <None Include="localhost.pfx">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+  </ItemGroup>
 
 
 </Project>

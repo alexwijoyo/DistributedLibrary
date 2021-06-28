@@ -1,0 +1,40 @@
+version: "3"
+services:
+  rabbitmq:
+    hostname: rabbitmq
+    image: masstransit/rabbitmq:latest
+    container_name: rabbitmq
+    networks:
+     - network
+    ports:
+     - "5672:5672"
+     - "15672:15672"
+    healthcheck:
+        timeout: 5s
+        interval: 5s
+        retries: 10
+        test:
+          - "CMD"
+          - "rabbitmqctl"
+          - "status"
+  worker: 
+    build: 
+      context: .
+      dockerfile: ./Library.OnPlatform/Dockerfile
+    container_name: worker
+    networks:
+     - network
+  api:
+    build: 
+      context: .
+      dockerfile: ./Library.Api/Dockerfile
+    container_name: api
+    environment:
+     - ASPNETCORE_Kestrel__Certificates__Default__Path=/Library.Api/localhost.pfx    
+    networks:
+     - network
+    ports:
+     - "5000:5000"
+   
+networks:
+    network: {}
